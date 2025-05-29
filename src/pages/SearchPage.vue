@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {Search} from 'lucide-vue-next'
-import Container from '@/components/Container.vue';
+import Container from '@/components/SingleComponents/Container.vue';
 import { watch, ref } from 'vue';
 
 const mouseEnter = ref<boolean>(false)

@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import {Search} from 'lucide-vue-next'
-import Container from '@/components/Container.vue';
-import SunLight from '@/components/SunLight.vue';
+import Container from '@/components/SingleComponents/Container.vue';
+import SunLight from '@/components/SingleComponents/SunLight.vue';
 import { navigateTo } from '@/funcs/NavigateTo.ts';
 import {ref} from 'vue'
+import AuthButtons from '@/components/ComplexComponents/AuthButtons.vue';
 
 const wavesActive = ref<boolean>(false)
 </script>
 
 <template>
   <Container  class="overflow-hidden">
-
+    <AuthButtons/>
     <div class="flex flex-col gap-4 items-center">
+
       <SunLight :waving="wavesActive" class="sunlight w-full flex  justify-center "/>
 
       <div class="z-10 flex items-center flex-col">
@@ -55,11 +57,6 @@ const wavesActive = ref<boolean>(false)
     opacity: 0.5;
   }
 }
-
-//.try:hover{
-//  background-color: var(--main-white);
-//  color: var(--main-background);
-//}
 
 
 .sunlight, .try{
