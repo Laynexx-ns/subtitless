@@ -5,6 +5,7 @@ const props = defineProps({
   waving: Boolean,
 });
 
+
 const kx = ref<number>(1)
 const ky = ref<number>(1)
 
@@ -71,9 +72,6 @@ watch(() => props.waving, (newVal) => {
   opacity: 1;
   scale: 120%
 }
-
-
-
 
 
 .light {
