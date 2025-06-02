@@ -3,19 +3,20 @@ import {Search} from 'lucide-vue-next'
 import Container from '@/components/SingleComponents/basic/Container.vue';
 import { watch, ref } from 'vue';
 import axios from 'axios'
-import LyricsComponent from '@/components/SingleComponents/LyricsComponent.vue';
 import ReturnButton from '@/components/SingleComponents/basic/ReturnButton.vue';
+import { navigateTo } from '@/funcs/NavigateTo.ts';
 
 
 const mouseEnter = ref<boolean>(false)
 const searchString = ref<string>("")
 const searchClicked = ref<boolean>(false)
 
-const lyrics = ref<string[]>([])
+
 
 watch(() => mouseEnter.value, (newVal) =>{
   handleMouseEnter(newVal)
 })
+
 
 const handleMouseEnter = (value : boolean) =>{
   const object = document.querySelector('.input-wrapper')
@@ -28,10 +29,11 @@ const handleMouseEnter = (value : boolean) =>{
 
 const handlerSearch = async (text: string)=>{
   const splittedText = text.split(' - ').map((item: string) => {return item.split(' ').join('-').toLowerCase()})
-  const response = (await axios.get(`http://localhost:3001/?author=${splittedText[0]}&track=${splittedText[1]}`)).data
-  if (response){
-    searchClicked.value = true
-    lyrics.value = response
+  const response = (await axios.get(`http://localhost:3001/?author=${splittedText[0]}&track=${splittedText[1]}`)).status
+  if (response != 200){
+    console.error("not found")
+  } else{
+    navigateTo(`/search/${splittedText[0]}.${splittedText[1]}`)
   }
   console.log(response)
 }
@@ -47,7 +49,7 @@ const handlerSearch = async (text: string)=>{
 
       <div
         @focusin="handleMouseEnter(true)"
-        class="input-wrapper relative flex scale-200 flex-row gap-4"
+        class="input-wrapper relative flex scale-120 md:scale-200 flex-row gap-4"
         :class="searchClicked ? 'disappear' : 'appear'"
       >
         <input
@@ -58,10 +60,7 @@ const handlerSearch = async (text: string)=>{
 
           @click="mouseEnter=true; handlerSearch(searchString)" class="absolute top-1/4 right-4 font-thin opacity-50 hover:opacity-70">найти</button>
       </div>
-    </div>
-
-    <div v-if="searchClicked" class="appear flex  overflow-y-hidden flex-col absolute top-44 gap-10">
-      <LyricsComponent :lyrics="lyrics"/>
+      <span class="appear -mt-4 opacity-50 font-thin">author - track</span>
     </div>
 
 

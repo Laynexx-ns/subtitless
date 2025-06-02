@@ -19,8 +19,8 @@ const wavesActive = ref<boolean>(false)
       <div class="z-10 flex items-center flex-col">
 
         <div class="texts">
-          <h1 class="text-5xl font-bold opacity-80">Welcome to the</h1>
-          <h1 class="subtitles text-9xl font-black tracking-tight">Subtitless</h1>
+          <h1 class="text-4xl md:text-5xl font-bold opacity-80">Welcome to the</h1>
+          <h1 class="subtitles text-7xl md:text-9xl font-black tracking-tight">Subtitless</h1>
         </div>
 
         <button
