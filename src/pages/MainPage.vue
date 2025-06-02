@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import {Search} from 'lucide-vue-next'
-import Container from '@/components/SingleComponents/Container.vue';
+import Container from '@/components/SingleComponents/basic/Container.vue';
 import SunLight from '@/components/SingleComponents/SunLight.vue';
 import { navigateTo } from '@/funcs/NavigateTo.ts';
-import {ref} from 'vue'
-import AuthButtons from '@/components/ComplexComponents/AuthButtons.vue';
+import { ref } from 'vue';
+
+
 
 const wavesActive = ref<boolean>(false)
 </script>
 
 <template>
   <Container  class="overflow-hidden">
-    <AuthButtons/>
     <div class="flex flex-col gap-4 items-center">
 
       <SunLight :waving="wavesActive" class="sunlight w-full flex  justify-center "/>
@@ -35,12 +35,17 @@ const wavesActive = ref<boolean>(false)
 
 <style lang="scss">
 @keyframes appear {
-  from{
+  0%{
+    filter: blur(40px);
     scale: 0.5;
     opacity: 0;
     transform: translateY(1000px);
   }
+  70%{
+    filter: blur(20px);
+  }
   to{
+    filter: none;
     opacity: 1;
     transform: translateY(0);
   }
@@ -62,7 +67,7 @@ const wavesActive = ref<boolean>(false)
 .sunlight, .try{
   opacity: 0;
   animation: from-invisible 1s ease-in-out forwards;
-  animation-delay: 0.8s;
+  animation-delay: 1s;
 }
 
 

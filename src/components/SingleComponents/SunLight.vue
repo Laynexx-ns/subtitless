@@ -114,7 +114,7 @@ watch(() => props.waving, (newVal) => {
 }
 
 .fifth {
-  background-color: #fffa33;
+  background-color: var(--yellow);
   mix-blend-mode: luminosity;
   filter: blur(180px);
 }

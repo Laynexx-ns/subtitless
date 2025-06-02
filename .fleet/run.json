@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "bun",
+            "name": "bun configuration",
+            "command": "run",
+            "scripts": "dev"
+        }
+    ]
+}

@@ -15,7 +15,7 @@ const props = defineProps({
 const style = computed((): string => {
   switch (props.variant) {
     case ButtonTypes.accent:
-      return "accent border rounded-full font-semibold hover:font-black transition-all";
+      return "accent border rounded-full font-semibold hover:font-black";
     case ButtonTypes.basic:
       return "border rounded-full hover:font-bold hover:border-2";
     case ButtonTypes.outline:
@@ -31,7 +31,7 @@ const style = computed((): string => {
 
 <template>
   <button
-    class="px-6 hover:scale-110  py-4"
+    class="px-6 hover:scale-110 transition-all  py-4"
     :class="style"
     @click="navigateTo(url ?? '/')"
   >
