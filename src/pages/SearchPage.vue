@@ -4,6 +4,7 @@ import Container from '@/components/SingleComponents/basic/Container.vue';
 import { watch, ref } from 'vue';
 import axios from 'axios'
 import LyricsComponent from '@/components/SingleComponents/LyricsComponent.vue';
+import ReturnButton from '@/components/SingleComponents/basic/ReturnButton.vue';
 
 
 const mouseEnter = ref<boolean>(false)
@@ -37,6 +38,7 @@ const handlerSearch = async (text: string)=>{
 </script>
 
 <template>
+  <ReturnButton url="/"/>
   <Container>
     <div class="flex flex-col absolute top-44 gap-10">
       <h1
